@@ -36,11 +36,11 @@
     ],
     "no-plusplus": "off",
     "import/extensions": "off",
-    "rules": {
-      "react/jsx-filename-extension": [
-        1,
-        { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-      ]
-    }
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }

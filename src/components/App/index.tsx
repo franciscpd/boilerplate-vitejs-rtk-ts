@@ -1,7 +1,7 @@
 import { Button } from 'react-daisyui'
 
 import { increment } from '../../features/counter/counter-slice'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../hooks/store'
 
 import logo from '../../logo.svg'
 

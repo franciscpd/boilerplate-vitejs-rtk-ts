@@ -1,10 +1,12 @@
 mutation logIn($username: String!, $password: String!) {
   logIn(input: { username: $username, password: $password }) {
+    clientMutationId
     viewer {
       sessionToken
       user {
         id
         username
+        email
       }
     }
   }

@@ -19,7 +19,7 @@ export type LogInMutationVariables = Types.Exact<{
 }>;
 
 
-export type LogInMutation = { __typename?: 'Mutation', logIn?: { __typename?: 'LogInPayload', viewer: { __typename?: 'Viewer', sessionToken: string, user: { __typename?: 'User', id: string, username?: string } } } };
+export type LogInMutation = { __typename?: 'Mutation', logIn?: { __typename?: 'LogInPayload', viewer: { __typename?: 'Viewer', sessionToken: string, user: { __typename?: 'User', id: string, username?: string, email?: string } } } };
 
 export type LogOutMutationVariables = Types.Exact<{
   clientMutationId: Types.Scalars['String'];
@@ -37,6 +37,7 @@ export const LogInDocument = `
       user {
         id
         username
+        email
       }
     }
   }
