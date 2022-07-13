@@ -1,0 +1,17 @@
+mutation logIn($username: String!, $password: String!) {
+  logIn(input: { username: $username, password: $password }) {
+    viewer {
+      sessionToken
+      user {
+        id
+        username
+      }
+    }
+  }
+}
+
+mutation logOut($clientMutationId: String!) {
+  logOut(input: { clientMutationId: $clientMutationId }) {
+    ok
+  }
+}

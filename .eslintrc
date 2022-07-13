@@ -35,6 +35,12 @@
       { "props": true, "ignorePropertyModificationsFor": ["state"] }
     ],
     "no-plusplus": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+      ]
+    }
   }
 }

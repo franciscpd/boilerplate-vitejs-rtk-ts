@@ -1,7 +1,7 @@
-import { Button } from 'react-daisyui';
+import { Button } from 'react-daisyui'
 
 import { increment } from '../../features/counter/counter-slice'
-import { useAppDispatch, useAppSelector } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 
 import logo from '../../logo.svg'
 
@@ -20,7 +20,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          <Button animation color='primary' onClick={handleClick}>
+          <Button animation color="primary" onClick={handleClick}>
             count is: {count}
           </Button>
         </p>
