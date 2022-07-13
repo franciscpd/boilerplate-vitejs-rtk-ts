@@ -9,29 +9,94 @@
  * for this file to be re-created
  */
 
-import * as Types from '../../../../services/types.generated';
+import * as Types from '../../../../services/types.generated'
 
-import { api } from '../../../../services/api';
-module.hot?.accept();
+import { api } from '../../../../services/api'
+module.hot?.accept()
+export type SignUpMutationVariables = Types.Exact<{
+  username: Types.Scalars['String']
+  password: Types.Scalars['String']
+  email: Types.Scalars['String']
+  emailVerified?: Types.InputMaybe<Types.Scalars['Boolean']>
+}>
+
+export type SignUpMutation = {
+  __typename?: 'Mutation'
+  signUp?: {
+    __typename?: 'SignUpPayload'
+    clientMutationId?: string
+    viewer: {
+      __typename?: 'Viewer'
+      sessionToken: string
+      user: {
+        __typename?: 'User'
+        id: string
+        username?: string
+        email?: string
+      }
+    }
+  }
+}
+
 export type LogInMutationVariables = Types.Exact<{
-  username: Types.Scalars['String'];
-  password: Types.Scalars['String'];
-}>;
+  username: Types.Scalars['String']
+  password: Types.Scalars['String']
+}>
 
-
-export type LogInMutation = { __typename?: 'Mutation', logIn?: { __typename?: 'LogInPayload', viewer: { __typename?: 'Viewer', sessionToken: string, user: { __typename?: 'User', id: string, username?: string, email?: string } } } };
+export type LogInMutation = {
+  __typename?: 'Mutation'
+  logIn?: {
+    __typename?: 'LogInPayload'
+    clientMutationId?: string
+    viewer: {
+      __typename?: 'Viewer'
+      sessionToken: string
+      user: {
+        __typename?: 'User'
+        id: string
+        username?: string
+        email?: string
+      }
+    }
+  }
+}
 
 export type LogOutMutationVariables = Types.Exact<{
-  clientMutationId: Types.Scalars['String'];
-}>;
+  clientMutationId: Types.Scalars['String']
+}>
 
+export type LogOutMutation = {
+  __typename?: 'Mutation'
+  logOut?: { __typename?: 'LogOutPayload'; ok: boolean }
+}
 
-export type LogOutMutation = { __typename?: 'Mutation', logOut?: { __typename?: 'LogOutPayload', ok: boolean } };
+export type SendVerificationEmailMutationVariables = Types.Exact<{
+  email: Types.Scalars['String']
+}>
 
+export type SendVerificationEmailMutation = {
+  __typename?: 'Mutation'
+  sendVerificationEmail?: {
+    __typename?: 'SendVerificationEmailPayload'
+    ok: boolean
+  }
+}
 
-export const LogInDocument = `
-    mutation logIn($username: String!, $password: String!) {
-  logIn(input: {username: $username, password: $password}) {
+export type ResetPasswordMutationVariables = Types.Exact<{
+  email: Types.Scalars['String']
+}>
+
+export type ResetPasswordMutation = {
+  __typename?: 'Mutation'
+  resetPassword?: { __typename?: 'ResetPasswordPayload'; ok: boolean }
+}
+
+export const SignUpDocument = `
+    mutation signUp($username: String!, $password: String!, $email: String!, $emailVerified: Boolean) {
+  signUp(
+    input: {fields: {username: $username, password: $password, email: $email, emailVerified: $emailVerified}}
+  ) {
+    clientMutationId
     viewer {
       sessionToken
       user {
@@ -42,27 +107,79 @@ export const LogInDocument = `
     }
   }
 }
-    `;
+    `
+export const LogInDocument = `
+    mutation logIn($username: String!, $password: String!) {
+  logIn(input: {username: $username, password: $password}) {
+    clientMutationId
+    viewer {
+      sessionToken
+      user {
+        id
+        username
+        email
+      }
+    }
+  }
+}
+    `
 export const LogOutDocument = `
     mutation logOut($clientMutationId: String!) {
   logOut(input: {clientMutationId: $clientMutationId}) {
     ok
   }
 }
-    `;
+    `
+export const SendVerificationEmailDocument = `
+    mutation sendVerificationEmail($email: String!) {
+  sendVerificationEmail(input: {email: $email}) {
+    ok
+  }
+}
+    `
+export const ResetPasswordDocument = `
+    mutation resetPassword($email: String!) {
+  resetPassword(input: {email: $email}) {
+    ok
+  }
+}
+    `
 
 const injectedRtkApi = api.injectEndpoints({
-  overrideExisting: module.hot?.status() === "apply",
+  overrideExisting: module.hot?.status() === 'apply',
   endpoints: (build) => ({
+    signUp: build.mutation<SignUpMutation, SignUpMutationVariables>({
+      query: (variables) => ({ document: SignUpDocument, variables }),
+    }),
     logIn: build.mutation<LogInMutation, LogInMutationVariables>({
-      query: (variables) => ({ document: LogInDocument, variables })
+      query: (variables) => ({ document: LogInDocument, variables }),
     }),
     logOut: build.mutation<LogOutMutation, LogOutMutationVariables>({
-      query: (variables) => ({ document: LogOutDocument, variables })
+      query: (variables) => ({ document: LogOutDocument, variables }),
+    }),
+    sendVerificationEmail: build.mutation<
+      SendVerificationEmailMutation,
+      SendVerificationEmailMutationVariables
+    >({
+      query: (variables) => ({
+        document: SendVerificationEmailDocument,
+        variables,
+      }),
+    }),
+    resetPassword: build.mutation<
+      ResetPasswordMutation,
+      ResetPasswordMutationVariables
+    >({
+      query: (variables) => ({ document: ResetPasswordDocument, variables }),
     }),
   }),
-});
+})
 
-export { injectedRtkApi as api };
-export const { useLogInMutation, useLogOutMutation } = injectedRtkApi;
-
+export { injectedRtkApi as api }
+export const {
+  useSignUpMutation,
+  useLogInMutation,
+  useLogOutMutation,
+  useSendVerificationEmailMutation,
+  useResetPasswordMutation,
+} = injectedRtkApi

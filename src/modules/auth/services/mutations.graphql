@@ -1,3 +1,31 @@
+mutation signUp(
+  $username: String!
+  $password: String!
+  $email: String!
+  $emailVerified: Boolean
+) {
+  signUp(
+    input: {
+      fields: {
+        username: $username
+        password: $password
+        email: $email
+        emailVerified: $emailVerified
+      }
+    }
+  ) {
+    clientMutationId
+    viewer {
+      sessionToken
+      user {
+        id
+        username
+        email
+      }
+    }
+  }
+}
+
 mutation logIn($username: String!, $password: String!) {
   logIn(input: { username: $username, password: $password }) {
     clientMutationId
@@ -14,6 +42,18 @@ mutation logIn($username: String!, $password: String!) {
 
 mutation logOut($clientMutationId: String!) {
   logOut(input: { clientMutationId: $clientMutationId }) {
+    ok
+  }
+}
+
+mutation sendVerificationEmail($email: String!) {
+  sendVerificationEmail(input: { email: $email }) {
+    ok
+  }
+}
+
+mutation resetPassword($email: String!) {
+  resetPassword(input: { email: $email }) {
     ok
   }
 }

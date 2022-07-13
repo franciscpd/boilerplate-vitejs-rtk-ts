@@ -7,20 +7,39 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
-    "watch-codegen": "graphql-codegen --config codegen.yml --watch 'src/**/*.graphql'"
+    "watch-codegen": "graphql-codegen --config codegen.yml --watch 'src/**/*.graphql'",
+    "prepare": "husky install",
+    "lint": "eslint --fix"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,html,css,json}": [
+      "npx prettier --write"
+    ],
+    "**/*.{js,jsx,ts,tsx}": [
+      "npx eslint --fix"
+    ]
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@hookform/resolvers": "^2.9.5",
     "@reduxjs/toolkit": "^1.8.0",
     "@rtk-query/graphql-request-base-query": "^2.1.0",
+    "@tailwindcss/forms": "^0.5.2",
     "graphql": "^16.5.0",
     "graphql-request": "^4.3.0",
     "react": "^17.0.2",
     "react-daisyui": "^2.0.6",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.33.1",
     "react-redux": "^7.2.6",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "react-select": "^5.4.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@graphql-codegen/add": "^3.2.0",
     "@graphql-codegen/cli": "^2.8.0",
     "@graphql-codegen/near-operation-file-preset": "^2.3.1",
@@ -32,6 +51,7 @@
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@types/webpack-env": "^1.17.0",
+    "@types/yup": "^0.29.14",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "@vitejs/plugin-react": "^1.2.0",
@@ -44,8 +64,10 @@
     "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
-    "prettier": "^2.5.1",
+    "prettier": "^2.7.1",
     "tailwindcss": "^3.1.5",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"

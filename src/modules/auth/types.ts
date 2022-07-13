@@ -1,3 +1,8 @@
+export interface ILogin {
+  username: String
+  password: String
+}
+
 export interface UserState {
   id: String
   username: String

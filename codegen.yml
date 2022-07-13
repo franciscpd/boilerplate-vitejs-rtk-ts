@@ -2,9 +2,9 @@ ovewrite: true
 schema:
   - https://parseapi.back4app.com/graphql:
       headers:
-        X-Parse-Application-Id:
-        X-Parse-Master-Key:
-        X-Parse-Client-Key:
+        X-Parse-Application-Id: sKaPmQaLTB0OP2bcL4cUIUa3IRpfzvxirNP7CVql
+        X-Parse-Master-Key: seQ51l599kLU5I0pXqSZRhlicNqjJzHoFzriMcZ2
+        X-Parse-Client-Key: 90KRBzFgiunz1sndNKjGpsJQgbJCqtPVf6VSPorh
 documents: './src/**/*.graphql'
 watchConfig:
   usePolling: true
