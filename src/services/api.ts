@@ -2,6 +2,8 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query'
 import { GraphQLClient } from 'graphql-request'
 
+import { RootState } from '../store'
+
 export const client = new GraphQLClient(
   `${import.meta.env.VITE_API_URL}/graphql`,
   {
@@ -16,8 +18,12 @@ export const client = new GraphQLClient(
 export const api = createApi({
   baseQuery: graphqlRequestBaseQuery({
     client,
-    prepareHeaders: (headers, { getState, endpoint }) => {
-      console.log(endpoint)
+    prepareHeaders: (headers, { getState }) => {
+      const { sessionToken } = (getState() as RootState).auth
+
+      if (sessionToken) {
+        headers.set('X-Parse-Session-Token', sessionToken)
+      }
       return headers
     },
     customErrors(args) {

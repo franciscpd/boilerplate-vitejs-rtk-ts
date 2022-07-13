@@ -1,6 +1,6 @@
 import { Button } from 'react-daisyui'
 
-import { increment } from '../../features/counter/counter-slice'
+import { increment } from '../../features/counter/counterSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks/store'
 
 import logo from '../../logo.svg'
