@@ -1,11 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import type { PreloadedState } from '@reduxjs/toolkit'
 
-import counterReducer from '../features/counter/counterSlice'
 import authReducer from '../modules/auth/authSlice'
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
   auth: authReducer,
 })
 

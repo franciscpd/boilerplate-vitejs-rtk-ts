@@ -1,11 +1,11 @@
-import cx from 'classnames'
+import clx from 'classnames'
 
 interface Props {
   children: String
   error?: boolean
   htmlFor?: string
   alt?: boolean
-  classNames?: string
+  className?: string
 }
 
 function Label({
@@ -13,23 +13,22 @@ function Label({
   error = false,
   htmlFor,
   alt = false,
-  classNames,
+  className,
   ...props
 }: Props) {
   return (
-    <label
-      className={cx(
-        'label',
-        {
-          'text-error': error,
-          'text-primary': !error,
-        },
-        classNames
-      )}
-      htmlFor={htmlFor}
-      {...props}
-    >
-      <span className={cx({ 'label-text': !alt, 'label-text-alt': alt })}>
+    <label className="label" htmlFor={htmlFor} {...props}>
+      <span
+        className={clx(
+          {
+            'label-text': !alt,
+            'label-text-alt': alt,
+            'text-error': error,
+            'text-primary': !error && !className?.includes('text-'),
+          },
+          className
+        )}
+      >
         {children}
       </span>
     </label>

@@ -2,10 +2,10 @@
 
 exports[`Label > Should render the label 1`] = `
 <label
-  class="label text-primary"
+  class="label"
 >
   <span
-    class="label-text"
+    class="label-text text-primary"
   >
     Email
   </span>

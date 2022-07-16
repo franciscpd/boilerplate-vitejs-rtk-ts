@@ -1,3 +1,4 @@
+import React from 'react'
 import { describe, test, expect } from 'vitest'
 
 import { render } from '../../tests/utils'
@@ -15,18 +16,18 @@ describe('Label', () => {
   test('Should render color primary correct', () => {
     const { container } = render(<Label>Email</Label>)
 
-    expect(container.firstChild).toHaveClass('text-primary')
+    expect(container.querySelector('span')).toHaveClass('text-primary')
   })
 
   test('Should render color error correct', () => {
     const { container } = render(<Label error>Email</Label>)
 
-    expect(container.firstChild).toHaveClass('text-error')
+    expect(container.querySelector('span')).toHaveClass('text-error')
   })
 
   test('Should render custom color correct', () => {
-    const { container } = render(<Label classNames="text-info">Email</Label>)
+    const { container } = render(<Label className="text-info">Email</Label>)
 
-    expect(container.firstChild).toHaveClass('text-info')
+    expect(container.querySelector('span')).toHaveClass('text-info')
   })
 })

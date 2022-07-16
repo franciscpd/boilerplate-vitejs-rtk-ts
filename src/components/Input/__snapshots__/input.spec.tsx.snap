@@ -1,0 +1,25 @@
+// Vitest Snapshot v1
+
+exports[`Input > Should render the input 1`] = `
+<div
+  class="form-control mt-4"
+  role="form"
+>
+  <label
+    class="label"
+    for="email"
+  >
+    <span
+      class="label-text text-primary"
+    >
+      E-mail
+    </span>
+  </label>
+  <input
+    class="input text-gray-500 focus:outline-0 focus:border-primary focus:ring-primary focus:shadow-none input-primary focus:outline-offset-0 input-bordered"
+    name="email"
+    placeholder="email@test.com"
+    value=""
+  />
+</div>
+`;
