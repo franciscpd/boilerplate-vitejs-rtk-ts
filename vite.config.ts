@@ -14,12 +14,5 @@ export default defineConfig({
     coverage: {
       reporter: ['text', 'json', 'html'],
     },
-    exclude: [
-      '**/tests/**',
-      '**/node_modules/**',
-      '**/dist/**',
-      '**/cypress/**',
-      '**/.{idea,git,cache,output,temp}/**',
-    ],
   },
 })
