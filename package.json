@@ -12,6 +12,7 @@
     "prepare": "husky install",
     "lint": "eslint --fix",
     "test": "vitest",
+    "test:watch": "vitest --watch",
     "test:ui": "vitest --ui"
   },
   "lint-staged": {
