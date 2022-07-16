@@ -5,6 +5,5 @@
     "moduleResolution": "node",
     "baseUrl": "./src"
   },
-  "include": ["vite.config.ts"],
-  "exclude": ["**/*.spec.ts", "node_modules"]
+  "include": ["vite.config.ts"]
 }

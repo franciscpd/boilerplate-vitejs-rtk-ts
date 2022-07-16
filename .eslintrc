@@ -46,6 +46,8 @@
     "import/no-extraneous-dependencies": [
       "off",
       { "devDependencies": ["**/*.test.js", "**/*.spec.js"] }
-    ]
+    ],
+    "react/prop-types": "off",
+    "react/require-default-props": "off"
   }
 }

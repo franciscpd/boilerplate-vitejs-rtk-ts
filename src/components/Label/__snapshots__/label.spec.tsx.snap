@@ -1,0 +1,13 @@
+// Vitest Snapshot v1
+
+exports[`Label > Should render the label 1`] = `
+<label
+  class="label text-primary"
+>
+  <span
+    class="label-text"
+  >
+    Email
+  </span>
+</label>
+`;

@@ -4,6 +4,7 @@ import { increment } from '../../features/counter/counterSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks/store'
 
 import logo from '../../logo.svg'
+import InputField from '../Form/components/inputField'
 
 import './styles.css'
 
@@ -24,6 +25,7 @@ function App() {
             count is: {count}
           </Button>
         </p>
+        <InputField />
       </header>
     </div>
   )
