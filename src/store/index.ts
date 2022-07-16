@@ -1,16 +1,23 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import type { PreloadedState } from '@reduxjs/toolkit'
 
 import counterReducer from '../features/counter/counterSlice'
 import authReducer from '../modules/auth/authSlice'
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    auth: authReducer,
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
-  devTools: !import.meta.env.PROD,
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  auth: authReducer,
 })
 
-export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof rootReducer>
+
+export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
+  configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+    preloadedState,
+    devTools: !import.meta.env.PROD,
+  })
+
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch']
