@@ -1,3 +1,7 @@
+# Boilerplate vitejs typescript redux toolkit and tailwindcss
+
+[![codecov](https://codecov.io/gh/franciscpd/boilerplate-vitejs-rtk-ts/branch/main/graph/badge.svg?token=V48K1MNG93)](https://codecov.io/gh/franciscpd/boilerplate-vitejs-rtk-ts)
+
 ## Commit Message Convention
 
 This website follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
